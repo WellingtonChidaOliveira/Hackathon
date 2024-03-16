@@ -18,16 +18,16 @@ namespace Hackathon.Application.UseCases.DownloadZipVideo
 
                 if (File.Exists(destinationFilePath))
                 {
-                    return new Result { Success = true, Message = destinationDirectory, Data = null };
+                    return ReturnResult.Ok("destinationDirectory"); 
                 }
                 else
                 {
-                    return new Result { Success = false, Message = destinationDirectory, Data = null };
+                    return ReturnResult.Fail("destinationDirectory");
                 }
             }
             catch (Exception ex)
             {
-                return new Result { Success = false, Message = ex.Message, Data = null };
+                return ReturnResult.Fail(ex.Message);
             }
         }
     }
