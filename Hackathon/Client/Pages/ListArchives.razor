@@ -73,21 +73,13 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        Video video = new Video("video1.mp4", "output1.mp4", FileProcessStatus.Processed, DateTime.Now);
-        Video video2 = new Video("video1.mp4", "output1.mp4", FileProcessStatus.Processed, DateTime.Now);
-        Video video3 = new Video("video1.mp4", "output1.mp4", FileProcessStatus.Processed, DateTime.Now);
-        archives.Add(video);
-        archives.Add(video2);
-        archives.Add(video3);
-
-
-      //  archives = await Http.GetFromJsonAsync<Video[]>("WeatherForecast");
+        var archives = await Http.GetAsync("/api/VideosController");
     }
 
     private async Task DownloadFile(string url)
     {
         string filePath = url;
 
-        await JSRuntime.InvokeVoidAsync("downloadFile", filePath, "arquivo.zip");
+        await Http.PutAsJsonAsync("/api/VideosController/download", url);
     }
 }
