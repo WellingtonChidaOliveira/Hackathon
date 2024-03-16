@@ -1,0 +1,30 @@
+version: '3.4'
+services:
+  videos.mq:
+    image: rabbitmq:management
+    container_name: Videos.RabbitMq
+    hostname: videos-mq
+    environment:
+      RABBITMQ_DEFAULT_USER: "guest"
+      RABBITMQ_DEFAULT_PASS: "guest"
+    ports:
+        - "5672:5672"
+        - "15672:15672"
+
+  videos.db:
+     image: postgres:latest
+     container_name: videos.db
+     environment:
+        - POSTGRES_DB=videos
+        - POSTGRES_USER=postgres
+        - POSTGRES_PASSWORD=postgres
+     volumes:
+        - ./.containers/database:/var/lib/postgresql/data
+     ports:
+      - "5432:5432"
+
+  video.consumer:
+    image: ${DOCKER_REGISTRY-}videoconsumer
+    build:
+      context: .
+      dockerfile: Hackathon.Consumer/Dockerfile

@@ -36,7 +36,7 @@ namespace Hackathon.Server.Controllers
 
             var result = await _sender.Send(command);
 
-            return CreatedAtRoute("Get", result);
+            return Ok(result);
         }
 
         [HttpPost("/download")]

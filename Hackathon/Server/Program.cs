@@ -1,3 +1,5 @@
+using Hackathon.Application;
+using Hackathon.Persistence;
 using Hackathon.Server.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,6 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
+builder.Services.AddPersistence(builder.Configuration);
+builder.Services.AddApplication();
 builder.Services.AddDbServices(builder.Configuration);
 builder.Services.AddSwaggerGen();
 
