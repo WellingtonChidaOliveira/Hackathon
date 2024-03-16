@@ -7,6 +7,7 @@ namespace Hackathon.Domain.Videos
     {
         public string InputFileName{ get; set; }
         public string OutputFileName { get; set; }
+        public byte[] UploadedVideo { get; set;}
         public FileProcessStatus Status { get; set; }
         public DateTime EndedAt { get; set; }
 
