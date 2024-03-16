@@ -1,4 +1,5 @@
-﻿using Hackathon.Application.UseCases.GetListVideos;
+﻿using Hackathon.Application.UseCases.DownloadZipVideo;
+using Hackathon.Application.UseCases.GetListVideos;
 using Hackathon.Application.UseCases.UploadVideos;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -30,6 +31,17 @@ namespace Hackathon.Server.Controllers
         public async Task<IActionResult> Post(UploadVideosCommand command)
         {
 
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var result = await _sender.Send(command);
+
+            return CreatedAtRoute("Get", result);
+        }
+
+        [HttpPost("/download")]
+        public async Task<IActionResult> Download(DowloadZipVideoCommand command)
+        {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
