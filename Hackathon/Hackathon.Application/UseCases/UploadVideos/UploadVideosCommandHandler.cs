@@ -1,5 +1,4 @@
-﻿using Hackathon.Domain.Message;
-using Hackathon.Domain.Util;
+﻿using Hackathon.Domain.Util;
 using Hackathon.IntegrationEvents;
 using Hackathon.Persistence.Settings;
 using MassTransit;
@@ -23,17 +22,24 @@ namespace Hackathon.Application.UseCases.UploadVideos
             try
             {
 
-                var notification = new UploadIntegrationEvent
+                foreach (var file in request.files)
                 {
-                    //NotificationDate = DateTime.Now,
-                    InputFileName = request.InputFileName,
-                };
+                    var notification = new UploadIntegrationEvent
+                    {
+                        InputFileName = file.FileName,
+                    };
 
-                var massTransitSettings = _configuration.GetSection("MassTransitSettings").Get<MassTransitSettings>();
+                    var massTransitSettings = _configuration.GetSection("MassTransitSettings").Get<MassTransitSettings>();
+
+                    var endpoint = await _bus.GetSendEndpoint(new Uri($"queue:{massTransitSettings?.EndpointName}"));
+                    await endpoint.Send(notification);
 
 
-                var endpoint = await _bus.GetSendEndpoint(new Uri($"queue:{massTransitSettings?.EndpointName}"));
-                await endpoint.Send(notification);
+                    await using FileStream fs = new FileStream($"/upload/{file.FileName}", FileMode.Create);
+                    await file.CopyToAsync(fs);
+                    
+                }
+;
 
                 return ReturnResult.Ok("Videos uploaded successfully. Please wait a few minutes and verify in the list.");
             }

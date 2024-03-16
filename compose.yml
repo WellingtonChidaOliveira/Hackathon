@@ -28,3 +28,17 @@ services:
     build:
       context: .
       dockerfile: Hackathon.Consumer/Dockerfile
+    volumes:
+      - shared_volume:/upload/
+
+  video.producer:
+    image: ${DOCKER_REGISTRY-}videoproducer
+    ports:
+      - 8000:80
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - shared_volume:/upload/
+volumes:
+  shared_volume:
