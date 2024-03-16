@@ -18,5 +18,12 @@ namespace Hackathon.Domain.Videos
             EndedAt = endedAt;
 
         }
+
+        public Video()
+        {
+
+        }
+
     }
+
 }

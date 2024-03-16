@@ -1,0 +1,53 @@
+﻿@page "/upload"
+@using Hackathon.Domain.Videos
+@using System.Net.Http.Headers
+@using static System.Net.WebRequestMethods
+@inject IJSRuntime JSRuntime
+
+<PageTitle>upload</PageTitle>
+
+
+<div class="container mt-5">
+    <h4 class="mb-3 mt-3">Upload de Arquivos</h4>
+
+    <div class="mb-3">
+        <label class="form-label" for="location">Arquivos</label>
+        <InputFile class="form-control" OnChange="@OnInputFileChange" accept="video/*" multiple />
+    </div>
+
+</div>
+
+    @code {
+
+    private int maxAllowedFiles = int.MaxValue;
+    private long maxFileSize = long.MaxValue;
+    private List<string> fileNames = new();
+//    private List<UploadResult> uploadResults = new();
+
+    private async Task OnInputFileChange(InputFileChangeEventArgs e)
+    {
+        using var content = new MultipartFormDataContent();
+
+        foreach (var file in e.GetMultipleFiles(maxAllowedFiles))
+        {
+            var fileContent = new StreamContent(file.OpenReadStream(maxFileSize));
+            fileContent.Headers.ContentType = new MediaTypeHeaderValue(file.ContentType);
+
+            fileNames.Add(file.Name);
+
+            content.Add(
+                content: fileContent,
+                name: "\"files\"",
+                fileName: file.Name);
+        }
+
+     //   var response = await Http.PostAsync("/api/File", content);
+       // var newUploadResults = await response.Content.ReadFromJsonAsync<List<UploadResult>>();
+
+       // if (newUploadResults is not null)
+      //  {
+      //      uploadResults = uploadResults.Concat(newUploadResults).ToList();
+      //  }
+     }
+
+    }
