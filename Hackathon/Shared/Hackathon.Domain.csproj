@@ -7,10 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <SupportedPlatform Include="browser" />
+    <Compile Remove="Pet\**" />
+    <EmbeddedResource Remove="Pet\**" />
+    <None Remove="Pet\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Pet\" />
+    <SupportedPlatform Include="browser" />
   </ItemGroup>
 </Project>
