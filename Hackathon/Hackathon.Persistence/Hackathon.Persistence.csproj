@@ -7,6 +7,24 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="C:\Users\Ramos\.nuget\packages\zenit.entityframeworkcore.migrations.postgresql\1.0.7\contentFiles\any\net6.0\logo.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.17" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.17">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.17" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.17">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.11" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Hackathon.Application\Hackathon.Application.csproj" />
   </ItemGroup>
 

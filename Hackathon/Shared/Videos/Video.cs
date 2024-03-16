@@ -10,13 +10,17 @@ namespace Hackathon.Domain.Videos
         public FileProcessStatus Status { get; set; }
         public DateTime EndedAt { get; set; }
 
+        // Parameterless constructor for Entity Framework
+        public Video()
+        {
+        }
+
         public Video(string inputFileName, string outputFileName, FileProcessStatus fileStatus, DateTime endedAt) : base()
         {
             InputFileName = inputFileName;
             OutputFileName = outputFileName;
             Status = fileStatus;
             EndedAt = endedAt;
-
         }
     }
 }
