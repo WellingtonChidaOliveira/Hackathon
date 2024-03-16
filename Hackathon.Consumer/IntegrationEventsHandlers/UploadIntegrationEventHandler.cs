@@ -3,9 +3,9 @@ using MassTransit;
 
 namespace Hackathon.Consumer.IntegrationEventsHandlers;
 
-public class VideoIntegrationEventHandler : IConsumer<VideoIntegrationEvent>
+public class UploadIntegrationEventHandler : IConsumer<UploadIntegrationEvent>
 {
-    public Task Consume(ConsumeContext<VideoIntegrationEvent> context)
+    public Task Consume(ConsumeContext<UploadIntegrationEvent> context)
     {
         return Task.CompletedTask;
     }

@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Hackathon.IntegrationEvents\Hackathon.IntegrationEvents.csproj" />
     <ProjectReference Include="..\Hackathon\Hackathon.Persistence\Hackathon.Persistence.csproj" />
   </ItemGroup>
 </Project>

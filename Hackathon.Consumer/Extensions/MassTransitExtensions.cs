@@ -21,12 +21,12 @@ public static class MassTransitExtensions
                 });
                 cfg.ReceiveEndpoint(settings?.EndpointName, e =>
                 {
-                    e.Consumer<VideoIntegrationEventHandler>();
+                    e.Consumer<UploadIntegrationEventHandler>();
                 });
                 cfg.ConfigureEndpoints(context);
             });
 
-            x.AddConsumer<VideoIntegrationEventHandler>();
+            x.AddConsumer<UploadIntegrationEventHandler>();
         });
     }
 }
