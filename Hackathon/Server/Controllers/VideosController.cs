@@ -28,7 +28,7 @@ namespace Hackathon.Server.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> Post(UploadVideosCommand command)
+        public async Task<IActionResult> Post([FromForm] UploadVideosCommand command)
         {
 
             if (!ModelState.IsValid)
