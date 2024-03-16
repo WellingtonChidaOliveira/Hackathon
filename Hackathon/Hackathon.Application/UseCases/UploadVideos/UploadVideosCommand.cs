@@ -4,6 +4,6 @@ using MediatR;
 
 namespace Hackathon.Application.UseCases.UploadVideos
 {
-    public record UploadVideosCommand(Video video) : IRequest<Result>;
+    public record UploadVideosCommand(string InputFileName) : IRequest<Result>;
     
 }

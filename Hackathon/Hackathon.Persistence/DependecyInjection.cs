@@ -1,18 +1,26 @@
-﻿using MassTransit;
+﻿using Hackathon.Persistence.Settings;
+using MassTransit;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Hackathon.Persistence
 {
     public static class DependecyInjection
     {
-        public static IServiceCollection AddPersistence(this IServiceCollection services)
+        public static IServiceCollection AddPersistence(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddMassTransit(busConfigurator =>
+            var settings = configuration.GetSection("MassTransitSettings").Get<MassTransitSettings>();
+
+            services.AddMassTransit(x =>
             {
-                busConfigurator.SetKebabCaseEndpointNameFormatter();
-                busConfigurator.UsingRabbitMq((context, busFactoryConfigurator) =>
+                x.UsingRabbitMq((context, cfg) =>
                 {
-                    busFactoryConfigurator.Host("rabbitmq", hostConfigurator => { });
+                    cfg.Host(new Uri(settings?.Host), host =>
+                    {
+                        host.Username(settings?.Username);
+                        host.Password(settings?.Password);
+                    });
+                    cfg.ConfigureEndpoints(context);
                 });
             });
             return services;

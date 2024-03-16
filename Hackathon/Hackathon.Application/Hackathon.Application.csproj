@@ -13,6 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Hackathon.IntegrationEvents\Hackathon.IntegrationEvents.csproj" />
+    <ProjectReference Include="..\Hackathon.Persistence\Hackathon.Persistence.csproj" />
     <ProjectReference Include="..\Shared\Hackathon.Domain.csproj" />
   </ItemGroup>
 
