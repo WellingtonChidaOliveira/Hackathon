@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MassTransit.RabbitMQ" Version="8.1.3" />
     <Content Remove="C:\Users\Ramos\.nuget\packages\zenit.entityframeworkcore.migrations.postgresql\1.0.7\contentFiles\any\net6.0\logo.ico" />
   </ItemGroup>
 

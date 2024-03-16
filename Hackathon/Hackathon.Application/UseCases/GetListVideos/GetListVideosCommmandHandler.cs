@@ -18,12 +18,7 @@ namespace Hackathon.Application.UseCases.GetListVideos
         {
             List<Video> videos = await _repository.GetListVideos();
 
-            return new Result
-            {
-                Message = "Videos retrieved successfully",
-                Success = true,
-                Data = videos
-            };
+            return ReturnResult.Ok("Videos retrieved successfully", videos);
         }
     }
 }
