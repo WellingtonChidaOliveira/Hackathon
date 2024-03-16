@@ -3,11 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34607.119
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hackathon.Server", "Hackathon\Server\Hackathon.Server.csproj", "{3720A7CE-0DF3-49E3-8367-A128D72157F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hackathon.Server", "Hackathon\Server\Hackathon.Server.csproj", "{3720A7CE-0DF3-49E3-8367-A128D72157F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hackathon.Client", "Hackathon\Client\Hackathon.Client.csproj", "{13B29C7E-F3C9-41B8-BFBE-C14BE94C3992}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hackathon.Client", "Hackathon\Client\Hackathon.Client.csproj", "{13B29C7E-F3C9-41B8-BFBE-C14BE94C3992}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hackathon.Shared", "Hackathon\Shared\Hackathon.Shared.csproj", "{334AA583-8382-4D59-935C-0AFDD7167962}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hackathon.Domain", "Hackathon\Shared\Hackathon.Domain.csproj", "{334AA583-8382-4D59-935C-0AFDD7167962}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hackathon.Application", "Hackathon\Hackathon.Application\Hackathon.Application.csproj", "{E99230E0-C11E-4C92-8F77-D9ACCAFA422B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hackathon.Persistence", "Hackathon\Hackathon.Persistence\Hackathon.Persistence.csproj", "{F7A731F8-27FE-444F-BF0C-90C055EC45EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +31,14 @@ Global
 		{334AA583-8382-4D59-935C-0AFDD7167962}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{334AA583-8382-4D59-935C-0AFDD7167962}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{334AA583-8382-4D59-935C-0AFDD7167962}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E99230E0-C11E-4C92-8F77-D9ACCAFA422B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E99230E0-C11E-4C92-8F77-D9ACCAFA422B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E99230E0-C11E-4C92-8F77-D9ACCAFA422B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E99230E0-C11E-4C92-8F77-D9ACCAFA422B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7A731F8-27FE-444F-BF0C-90C055EC45EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7A731F8-27FE-444F-BF0C-90C055EC45EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7A731F8-27FE-444F-BF0C-90C055EC45EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7A731F8-27FE-444F-BF0C-90C055EC45EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

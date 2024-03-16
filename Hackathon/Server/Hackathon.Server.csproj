@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
@@ -12,7 +12,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Client\Hackathon.Client.csproj" />
-    <ProjectReference Include="..\Shared\Hackathon.Shared.csproj" />
+    <ProjectReference Include="..\Hackathon.Application\Hackathon.Application.csproj" />
+    <ProjectReference Include="..\Hackathon.Persistence\Hackathon.Persistence.csproj" />
   </ItemGroup>
 
 
