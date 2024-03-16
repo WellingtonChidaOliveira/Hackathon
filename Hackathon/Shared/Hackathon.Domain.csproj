@@ -7,10 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <SupportedPlatform Include="browser" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Pet\" />
+    <SupportedPlatform Include="browser" />
   </ItemGroup>
 </Project>
