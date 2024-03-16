@@ -23,5 +23,12 @@ namespace Hackathon.Domain.Videos
             Status = fileStatus;
             EndedAt = endedAt;
         }
+
+        public Video()
+        {
+
+        }
+
     }
+
 }

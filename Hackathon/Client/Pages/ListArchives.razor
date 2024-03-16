@@ -1,0 +1,93 @@
+﻿@page "/archives"
+@using Hackathon.Domain
+@using Hackathon.Domain.Enums
+@using Hackathon.Domain.Videos
+@inject HttpClient Http
+
+<PageTitle>Archives</PageTitle>
+
+<h2>Lista de Envios</h2>
+
+<p>.</p>
+
+@if (archives == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Data de envio</th>
+                <th>Data de finalização</th>
+                <th>Status do envio</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var archive in archives)
+            {
+                <tr>
+                    <td>@archive.CreatedAt.ToShortDateString()</td>
+                    <td>@archive.EndedAt</td>
+                    <td>@archive.Status.ToString()</td>
+                    <td>
+                        @if (@archive.OutputFileName != null && @archive.Status == FileProcessStatus.Processed)
+                        {
+                            <button type="button" @onclick="() => DownloadFile(archive.OutputFileName)" class="btn btn-primary">Baixar</button>
+                        }
+                    </td>
+             
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <script>
+        window.downloadFile = function (filePath, fileName) {
+            fetch(filePath)
+                .then(response => response.blob())
+                .then(blob => {
+                    const url = window.URL.createObjectURL(new Blob([blob]));
+                    const a = document.createElement('a');
+                    a.style.display = 'none';
+                    a.href = url;
+                    a.download = fileName;
+                    document.body.appendChild(a);
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+                })
+                .catch(error => console.error('Error downloading file:', error));
+        }
+    </script>
+}
+
+@code {
+
+     [Inject]
+        private IJSRuntime JSRuntime { get; set; }
+
+    private List<Video> archives = new();
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        Video video = new Video("video1.mp4", "output1.mp4", FileProcessStatus.Processed, DateTime.Now);
+        Video video2 = new Video("video1.mp4", "output1.mp4", FileProcessStatus.Processed, DateTime.Now);
+        Video video3 = new Video("video1.mp4", "output1.mp4", FileProcessStatus.Processed, DateTime.Now);
+        archives.Add(video);
+        archives.Add(video2);
+        archives.Add(video3);
+
+
+      //  archives = await Http.GetFromJsonAsync<Video[]>("WeatherForecast");
+    }
+
+    private async Task DownloadFile(string url)
+    {
+        string filePath = url;
+
+        await JSRuntime.InvokeVoidAsync("downloadFile", filePath, "arquivo.zip");
+    }
+}
